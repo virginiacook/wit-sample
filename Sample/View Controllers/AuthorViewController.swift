@@ -179,6 +179,20 @@ extension AuthorViewController {
         calc.headerView.configure(with: section.headerTitle)
         return calc.headerView.frame.size
     }
+    
+    // cell selection
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = sections[indexPath.section].rows[indexPath.item]
+        switch cell {
+        case .author:
+            if let url = author.webURL {
+                let safariVC = SFSafariViewController(url: url)
+                self.present(safariVC, animated: true)
+            }
+        default:
+            return
+        }
+    }
 }
 
 extension AuthorViewController: UICollectionViewDelegateFlowLayout {

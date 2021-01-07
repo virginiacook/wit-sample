@@ -34,6 +34,10 @@ struct Author: Codable {
         }
     }
     
+    var webURL: URL? {
+        return URL(string: "https://www.penguinrandomhouse.com/authors/\(id)")
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id = "authorid"
         case firstName = "authorfirst"
